@@ -26,16 +26,25 @@ export class Conta {
     }
 
     sacar(valor) {
-        if (valor > this._saldo) {
-            const msgAlert = `Não podemos efetuar o saque pois ${valor} é maior que seu saldo atual de ${this._saldo}`;
+
+        let taxa = 1;
+        this._sacar(valor, taxa);
+
+    }
+
+    _sacar(valor, taxa){
+        const valorSacado = taxa *valor;
+        if (valorSacado > this._saldo) {
+            const msgAlert = `Não podemos efetuar o saque pois ${valorSacado} é maior que seu saldo atual de ${this._saldo}`;
             return console.log(msgAlert);
         }
 
-        this._saldo -= valor;
+        this._saldo -= valorSacado;
         console.log(`sacamento efetuado com sucesso! Agora seu saldo é de ${this._saldo}`);
-        return valor;
-
+        return valorSacado;
     }
+
+
 
     depositar(valor) {
         if (valor < 0) {
@@ -43,18 +52,18 @@ export class Conta {
             return console.log(msgAlert);
         }
         this._saldo += valor;
-        console.log(`Deposito efetuado com sucesso! Agora seu saldo é de ${this._saldo}`);
+        console.log(`Deposito efetuado com sucesso! Agora seu saldo é de ${this.saldo}`);
     }
 
     transferir(valor, conta) {
 
-        if (valor <= 0) {
-            const msgAlert = `Não podemos transferir valores abaixo ou igual à 0`;
+        if (valor > this._saldo) {
+            const msgAlert = `Seu Saldo de ${this.saldo} é menor do que ${valor}(valor de transferência)`;
             return console.log(msgAlert);
         }
 
         const ValorTransferir = this.sacar(valor);
-        console.log(`Transferencia para a conta de ${conta._cliente.nome} no valor de ${valor} com sucesso!`);
+        console.log(`Transferencia para a ${conta.cliente.nome} no valor de ${valor} com sucesso!`);
         conta.depositar(ValorTransferir);
 
     }
