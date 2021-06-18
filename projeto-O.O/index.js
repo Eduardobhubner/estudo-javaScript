@@ -2,9 +2,9 @@
 //hoje para falar que um atributo da classe é privada usados '_' antes(ex: _nome), porem dessa forma é apenas uma boa prática, ainda podendo alterar o valor mesmo fora da classe 
 
 import { Cliente } from './Cliente.js';
-import { ContaCorrente } from './ContaCorrente.js';
-import { ContaPoupanca } from './ContaPoupanca.js';
-import { ContaSalario } from './ContaSalario.js';
+import { ContaCorrente } from './Conta/ContaCorrente.js';
+import { ContaPoupanca } from './Conta/ContaPoupanca.js';
+import { ContaSalario } from './Conta/ContaSalario.js';
 
 
 const cliente1 = new Cliente('Eduardo', 1122233309);
