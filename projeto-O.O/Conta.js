@@ -1,3 +1,5 @@
+//classe abstrata, não se deve criar uma instancia diretamente dela
+
 import { Cliente } from "./Cliente.js";
 
 export class Conta {
@@ -19,10 +21,16 @@ export class Conta {
 
     constructor(saldo, cliente, agencia) {
 
+        // parar o programa e gerar um erro caso alguem faça uma instancia dessa classe diretamente
+        if(this.constructor == Conta){
+            throw new Error("você não deveria estar instanciando essa classe diretamente, pois essa é uma classe abstrada");
+        }
+
         this._saldo = saldo;
         this.cliente = cliente;
         this._agencia = agencia;
-
+      
+        
     }
 
     sacar(valor) {
