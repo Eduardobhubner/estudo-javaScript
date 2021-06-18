@@ -33,11 +33,9 @@ export class Conta {
         
     }
 
+    // metodo abstrado
     sacar(valor) {
-
-        let taxa = 1;
-        this._sacar(valor, taxa);
-
+        throw new Error("o método de sacar da conta é abstrada, sobrescreva o methodo no filho com a taxa");
     }
 
     _sacar(valor, taxa){

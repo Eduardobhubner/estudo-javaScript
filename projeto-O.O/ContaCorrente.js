@@ -11,7 +11,6 @@ export class ContaCorrente extends Conta{
 
     // sobrescrevendo o comportamento de sacar de Conta.js
     sacar(valor) {
-
         let taxa = 1.1; 
         return this._sacar(valor, taxa);
     }
